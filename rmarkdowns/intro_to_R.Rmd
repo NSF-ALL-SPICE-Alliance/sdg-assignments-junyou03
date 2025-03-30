@@ -47,6 +47,9 @@ We used the `library()` function within a code chunk (discussed last video). We 
   
     - For mac: Cmd + option + i
     - For PC: Ctrl + alt + i
+```{r}
+
+```
   
   - The beginning of a code chunk will always start with three dashes followed by {r} and end with three dashes
 
@@ -54,6 +57,12 @@ We used the `library()` function within a code chunk (discussed last video). We 
 #### Installing a Package
 
 Let's say you want to start using the tidyverse package to make cool visualizations, but haven't installed it yet. **Run the following code in the console** to install it: install.packages("tidyverse") 
+```{r}
+```
+
+
+```{r}
+```
 
 Hint: The *console with the code you need to write* is pictured below
 
@@ -107,6 +116,12 @@ my_age + 5 # how old will you be in 5 years?
 
 #### <span style="color: red;">Challenge 1</span>
 Create a my_name variable with your name assigned to the variable instead of "Victoria DelaCruz". Then, create a my_age variable with your age. 
+```{r}
+my_name <- "Jun You "
+my_age = 21
+
+my_age + 5
+```
 
 #### Different Types of Data
 
@@ -294,6 +309,12 @@ What if we want to subset specific rows? We can do this by using the filter func
 #### <span style="color: red;">Challenge 2</span>
 Using the `select()` function, select two new SDG goal scores. Assign it to a variable named `SDG_scores`. 
 
+```{r}
+SDG_scores <- sdr_data %>% 
+  select(goal_3_score, goal_4_score)
+
+```
+
 *2. filter()*
 
 Similarly to select, `filter()` can be used to extract specific rows. Let's try this out by filtering our data for those within the Oceania region.
@@ -313,6 +334,12 @@ Notes:
 
 #### <span style="color: red;">Challenge 3</span>
 Using the `filter()` function, filter for another region other than Oceania. Assign it to a variable named `new_region`. 
+
+```{r}
+new_region <- sdr_data %>% 
+  filter(regions_used_for_the_sdr == "Asia")
+
+```
 
 **Important**
 
