@@ -131,6 +131,13 @@ Cool! It seems that the darkest blue points (countries with the lowest SDG 5 sco
 #### <span style="color: red;">Challenge 1</span>
 Create a scatterplot using two different SDG scores. Then, color the points by using a third SDG score. In a couple of sentences, describe what you see.
 
+```{r}
+ggplot(data = sdr_data, aes(x= goal_1_score, y = goal_2_score, color = goal_5_score)) +
+  geom_point()
+```
+
+The scatterplot shows that countries with higher Goal 1 scores generally have higher Goal 2 scores, and those with elevated Goal 5 scores (as indicated by the color gradient) tend to cluster in the upper right.
+
 ### Bar Chart
 
 When should we use a **bar chart**?
@@ -189,6 +196,21 @@ As we can see in the Oceania region, most Countries do not have the necessary da
 
 #### <span style="color: red;">Challenge 2</span>
 Create a new bar chart with countries only from the MENA region. 
+```{r}
+mena_sdr_data <- sdr_data %>% 
+  filter(regions_used_for_the_sdr == "MENA")
+
+ggplot(mena_sdr_data, aes(x = goal_3_score, y = country)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.y = element_text(size = 4)) +
+  labs(
+    title = "SDG 3 Scores for MENA Countries",
+    x = "SDG 3 Score",
+    y = "Country"
+  )
+
+```
+
 
 ### Histogram
 
@@ -224,3 +246,15 @@ Countries that fall in the higher end of the Goal 4 spectrum belong to the OECD 
 
 #### <span style="color: red;">Challenge 3</span>
 Make a histogram for a different SDG score. Then, fill by region. In a couple of sentences, describe any interesting trends or what you notice from your new histogram.
+```{r}
+ggplot(sdr_data, aes(x = goal_5_score, fill = regions_used_for_the_sdr)) +
+  geom_histogram(bins = 30, color = "black") +
+  labs(
+    title = "Distribution of SDG 5 Scores by Region",
+    x = "SDG 5 Score",
+    y = "Number of Countries",
+    fill = "Region"
+  )
+```
+interpretation 
+The histogram indicates that countries in the OECD region tend to have higher SDG 5 scores, while those in Sub-Saharan Africa generally fall toward the lower end of the spectrum. This suggests notable regional differences in progress toward achieving Goal 5.
