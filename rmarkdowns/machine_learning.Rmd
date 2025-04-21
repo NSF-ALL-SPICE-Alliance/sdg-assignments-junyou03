@@ -333,11 +333,27 @@ plotPartial(pd)
 
 Edit this code chunk `k2 <- kmeans(sdr_data_imputed, centers = 2)` under the silhouette plot to increase the number of clusters
 
+```{r}
+k4 <- kmeans(sdr_data_imputed, centers = 4)
+
+fviz_cluster(k4, data = sdr_data_imputed) +
+  theme_minimal()
+
+```
+
+
 - Then, run the code chunk `fviz_cluster(k2, data = sdr_data_imputed) + theme_minimal()` to see the new visualization with the increased number of clusters
   
 #### <span style="color: red;">Challenge 2</span>
 
 Edit this code chunk `rf_matmort <- randomForest(normalized_score_sdg3_matmort ~ ., data = sdr_data_imputed, importance = TRUE)` to predict a different indicator score (any indicator other than normalized_score_sdg3_matmort)
+
+
+```{r}
+rf_u5mort <- randomForest(normalized_score_sdg3_u5mort ~ ., data = sdr_data_imputed, importance = TRUE)
+
+importance_df <- as.data.frame(rf_u5mort$importance)
+```
 
 - Rename the random forest model from rf_matmort to something that more accurately represents the model (base the name on the indicator you are predicting)
 
